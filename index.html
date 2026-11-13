@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PABLO | مواقع احترافية</title>
+    <meta
+      name="description"
+      content="PABLO — أعمل مواقع للمطاعم والمدرسين والمحلات. موقع احترافي بيجيبلك عملاء، جاهز في يوم."
+    />
+    <meta property="og:title" content="PABLO | مواقع احترافية" />
+    <meta
+      property="og:description"
+      content="أعمل مواقع للمطاعم والمدرسين والمحلات — موقع احترافي بيجيبلك عملاء، جاهز في يوم."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-dark: #0b0b0f;
+        --bg-elevated: #121218;
+        --glass-bg: rgba(255, 255, 255, 0.032);
+        --glass-bg-hover: rgba(255, 255, 255, 0.055);
+        --gold-main: #d4af37;
+        --gold-light: #f5d77a;
+        --gold-deep: #b38b22;
+        --gold-border: rgba(212, 175, 55, 0.25);
+        --gold-border-hover: rgba(245, 215, 122, 0.62);
+        --gold-glow: 0 0 28px rgba(212, 175, 55, 0.22), 0 12px 32px rgba(0, 0, 0, 0.45);
+        --text-primary: #ececf1;
+        --text-secondary: #b4b6c4;
+        --text-muted: #858899;
+        --radius-sm: 12px;
+        --radius-md: 16px;
+        --radius-lg: 22px;
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-primary);
+        font-size: 16px;
+        line-height: 1.7;
+        overflow-x: hidden;
+        padding-bottom: 88px;
+        position: relative;
+      }
+
+      /* Ambient subtle gold aura */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% -10%, rgba(212, 175, 55, 0.14), transparent 52%),
+          radial-gradient(circle at 12% 75%, rgba(212, 175, 55, 0.06), transparent 42%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      #gold-particles {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .page-shell {
+        position: relative;
+        z-index: 1;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--gold-light);
+        outline-offset: 3px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1120px;
+        margin-inline: auto;
+        padding-inline: 16px;
+      }
+
+      /* Gold gradient text utility */
+      .gold-text {
+        background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-light) 55%, var(--gold-main) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* Top Header */
+      .site-header {
+        border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+        background: rgba(11, 11, 15, 0.78);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 64px;
+      }
+
+      .brand-lockup {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        direction: ltr;
+        flex-shrink: 0;
+      }
+
+      .brand-logo {
+        font-size: 1.35rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        line-height: 1;
+        background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-light) 60%, var(--gold-main) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        white-space: nowrap;
+      }
+
+      .brand-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: radial-gradient(circle, var(--gold-light) 0%, var(--gold-main) 100%);
+        box-shadow: 0 0 10px rgba(245, 215, 122, 0.85);
+        animation: pulseDot 2.2s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+
+      @keyframes pulseDot {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.85;
+          box-shadow: 0 0 8px rgba(212, 175, 55, 0.65);
+        }
+        50% {
+          transform: scale(1.35);
+          opacity: 1;
+          box-shadow: 0 0 16px rgba(245, 215, 122, 0.95);
+        }
+      }
+
+      .site-nav {
+        display: none;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .site-nav a {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        white-space: nowrap;
+        padding-block: 4px;
+        border-bottom: 1.5px solid transparent;
+        transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+      }
+
+      .site-nav a:hover {
+        color: var(--gold-light);
+        border-bottom-color: var(--gold-main);
+      }
+
+      .header-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 8px 16px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--gold-border);
+        background: var(--glass-bg);
+        color: var(--gold-light);
+        font-size: 0.875rem;
+        font-weight: 700;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out), background-color 180ms var(--ease-out);
+      }
+
+      .header-cta:hover,
+      .header-cta:active {
+        border-color: var(--gold-border-hover);
+        background: rgba(212, 175, 55, 0.12);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding-block: 44px 36px;
+        text-align: center;
+      }
+
+      .hero-brand-wrap {
+        margin-bottom: 14px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-pablo {
+        display: inline-block;
+        direction: ltr;
+        font-size: clamp(3.25rem, 15vw, 6.25rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: 0.14em;
+        padding-inline-start: 0.14em;
+        background: linear-gradient(
+          110deg,
+          #9d7a1d 0%,
+          #d4af37 28%,
+          #fff2b2 48%,
+          #f5d77a 54%,
+          #d4af37 72%,
+          #9d7a1d 100%
+        );
+        background-size: 240% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: goldShimmer 4.5s ease-in-out infinite;
+        filter: drop-shadow(0 6px 24px rgba(212, 175, 55, 0.18));
+        user-select: none;
+      }
+
+      @keyframes goldShimmer {
+        0%,
+        15% {
+          background-position: 100% 50%;
+        }
+        60%,
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .hero-title {
+        margin: 0 auto 14px;
+        max-width: 19ch;
+        min-height: 2.6em;
+        font-size: clamp(1.75rem, 5.5vw, 2.95rem);
+        font-weight: 800;
+        line-height: 1.35;
+        color: var(--text-primary);
+        text-wrap: balance;
+      }
+
+      .typing-cursor {
+        display: inline-block;
+        width: 2.5px;
+        height: 0.95em;
+        margin-inline-start: 4px;
+        vertical-align: -0.1em;
+        background-color: var(--gold-light);
+        box-shadow: 0 0 10px rgba(245, 215, 122, 0.8);
+        animation: blinkCursor 0.85s steps(1, end) infinite;
+      }
+
+      @keyframes blinkCursor {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        50.01%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .hero-subtitle {
+        margin: 0 auto 28px;
+        max-width: 44ch;
+        font-size: clamp(1.02rem, 2.5vw, 1.25rem);
+        font-weight: 400;
+        color: var(--text-secondary);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .btn-gold {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 12px 26px;
+        border-radius: var(--radius-sm);
+        background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-light) 100%);
+        color: #0b0b0f;
+        font-size: 1rem;
+        font-weight: 800;
+        white-space: nowrap;
+        border: 1px solid rgba(245, 215, 122, 0.7);
+        box-shadow: 0 6px 22px rgba(212, 175, 55, 0.22);
+        transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), filter 180ms var(--ease-out);
+      }
+
+      .btn-gold:hover,
+      .btn-gold:active {
+        transform: translateY(-2px);
+        box-shadow: 0 0 32px rgba(245, 215, 122, 0.42), 0 10px 28px rgba(0, 0, 0, 0.45);
+        filter: brightness(1.04);
+      }
+
+      .btn-glass {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 48px;
+        padding: 12px 24px;
+        border-radius: var(--radius-sm);
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--gold-border);
+        color: var(--text-primary);
+        font-size: 0.9375rem;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: transform 180ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out), background-color 180ms var(--ease-out);
+      }
+
+      .btn-glass:hover,
+      .btn-glass:active {
+        transform: translateY(-2px);
+        border-color: var(--gold-border-hover);
+        background: var(--glass-bg-hover);
+        box-shadow: var(--gold-glow);
+      }
+
+      /* Stats Strip */
+      .stats-section {
+        padding-block: 12px 32px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .stat-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid var(--gold-border);
+        border-radius: var(--radius-md);
+        padding: 18px 16px;
+        text-align: center;
+        transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out);
+      }
+
+      .stat-card:hover,
+      .stat-card:active {
+        border-color: var(--gold-border-hover);
+        box-shadow: var(--gold-glow);
+        transform: translateY(-2px);
+      }
+
+      .stat-value {
+        display: block;
+        font-size: 1.75rem;
+        font-weight: 900;
+        line-height: 1.2;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .stat-label {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+
+      /* Shared Section Styles */
+      .section {
+        padding-block: 44px;
+        border-top: 1px solid rgba(212, 175, 55, 0.12);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .section-title {
+        margin: 0 0 6px;
+        font-size: clamp(1.55rem, 4vw, 2.15rem);
+        font-weight: 800;
+        line-height: 1.3;
+      }
+
+      .section-desc {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+      }
+
+      /* Works Grid & Cards with Mini Phone Frame */
+      .works-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--gold-border);
+        border-radius: var(--radius-lg);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        transition: border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out), transform 220ms var(--ease-out), background-color 220ms var(--ease-out);
+      }
+
+      .glass-card:hover,
+      .glass-card:active {
+        background: var(--glass-bg-hover);
+        border-color: var(--gold-border-hover);
+        box-shadow: var(--gold-glow);
+        transform: translateY(-3px);
+      }
+
+      /* Mini Phone Frame inside Project Card */
+      .phone-stage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 12px;
+        border-radius: var(--radius-md);
+        background: radial-gradient(circle at 50% 35%, rgba(212, 175, 55, 0.12), rgba(11, 11, 15, 0.72));
+        border: 1px solid rgba(212, 175, 55, 0.16);
+      }
+
+      .mini-phone {
+        width: 176px;
+        border-radius: 24px;
+        padding: 10px;
+        background: linear-gradient(160deg, #1b1b24 0%, #0e0e14 100%);
+        border: 2px solid rgba(212, 175, 55, 0.55);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55), inset 0 0 12px rgba(212, 175, 55, 0.08);
+      }
+
+      .mini-phone-notch {
+        width: 48px;
+        height: 5px;
+        margin: 0 auto 10px;
+        border-radius: 999px;
+        background: rgba(212, 175, 55, 0.45);
+      }
+
+      .mini-phone-screen {
+        border-radius: 14px;
+        padding: 14px 12px;
+        background: linear-gradient(180deg, #16161f 0%, #0d0d13 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        text-align: center;
+      }
+
+      .mini-phone-tag {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--gold-main);
+        margin-bottom: 4px;
+      }
+
+      .mini-phone-name {
+        display: block;
+        font-size: 0.9375rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        line-height: 1.35;
+        margin-bottom: 10px;
+      }
+
+      .mini-phone-bars {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+
+      .mini-phone-bars span {
+        display: block;
+        height: 6px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .mini-phone-bars span:last-child {
+        width: 72%;
+        margin-inline: auto;
+      }
+
+      .mini-phone-pill {
+        height: 22px;
+        border-radius: 6px;
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(245, 215, 122, 0.9));
+        color: #0b0b0f;
+        font-size: 0.7rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .work-body {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+      }
+
+      .work-type {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--gold-main);
+      }
+
+      .work-title {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--text-primary);
+      }
+
+      .work-desc {
+        margin: 0;
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      .work-action {
+        margin-top: auto;
+        padding-top: 6px;
+      }
+
+      .btn-project {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        min-height: 46px;
+        padding: 10px 20px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--gold-border);
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--gold-light);
+        font-size: 0.9375rem;
+        font-weight: 800;
+        white-space: nowrap;
+        transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+      }
+
+      .btn-project:hover,
+      .btn-project:active {
+        background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-light) 100%);
+        border-color: var(--gold-light);
+        color: #0b0b0f;
+        box-shadow: 0 0 24px rgba(212, 175, 55, 0.32);
+      }
+
+      /* Features Grid ("إيه اللي هتاخده") */
+      .features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .feature-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid var(--gold-border);
+        border-radius: var(--radius-md);
+        padding: 18px;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out), background-color 200ms var(--ease-out);
+      }
+
+      .feature-card:hover,
+      .feature-card:active {
+        background: var(--glass-bg-hover);
+        border-color: var(--gold-border-hover);
+        box-shadow: var(--gold-glow);
+        transform: translateY(-2px);
+      }
+
+      .feature-num {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        border: 1px solid var(--gold-border);
+        background: rgba(212, 175, 55, 0.12);
+        color: var(--gold-light);
+        font-size: 0.875rem;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .feature-title {
+        margin: 0 0 2px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .feature-sub {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      /* Footer */
+      .site-footer {
+        border-top: 1px solid rgba(212, 175, 55, 0.14);
+        padding-block: 24px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
+      /* Fixed WhatsApp Button */
+      .floating-wa {
+        position: fixed;
+        left: 16px;
+        bottom: 16px;
+        z-index: 50;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 10px 20px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-light) 100%);
+        color: #0b0b0f;
+        font-size: 0.9375rem;
+        font-weight: 800;
+        white-space: nowrap;
+        border: 1px solid rgba(255, 243, 196, 0.65);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), 0 0 22px rgba(212, 175, 55, 0.35);
+        transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+      }
+
+      .floating-wa:hover,
+      .floating-wa:active {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 34px rgba(245, 215, 122, 0.55);
+      }
+
+      /* Scroll Reveal */
+      .reveal {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
+      }
+
+      .js-reveal .reveal:not(.is-visible) {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      /* Mobile-first Responsive Breakpoints */
+      @media (min-width: 520px) {
+        .stats-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding-inline: 24px;
+        }
+
+        .works-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+        }
+
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 18px;
+        }
+
+        .feature-card--wide {
+          grid-column: span 2;
+        }
+
+        .btn-project {
+          width: auto;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .site-nav {
+          display: flex;
+        }
+
+        .hero {
+          padding-block: 64px 44px;
+        }
+
+        .section {
+          padding-block: 56px;
+        }
+
+        .floating-wa {
+          left: 28px;
+          bottom: 24px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .features-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .feature-card--wide {
+          grid-column: span 1;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .js-reveal .reveal:not(.is-visible) {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="gold-particles" aria-hidden="true"></canvas>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container">
+          <div class="header-inner">
+            <a href="#top" class="brand-lockup" aria-label="PABLO">
+              <span class="brand-logo">PABLO</span>
+              <span class="brand-dot" aria-hidden="true"></span>
+            </a>
+
+            <nav class="site-nav" aria-label="التنقل الرئيسي">
+              <a href="#works">أعمالي</a>
+              <a href="#features">إيه اللي هتاخده</a>
+            </nav>
+
+            <a
+              href="https://wa.me/201286894963?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%B4%D8%BA%D9%84%20PABLO%20%D9%88%D8%B9%D8%A7%D9%8A%D8%B2%20%D9%85%D9%88%D9%82%D8%B9"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="header-cta"
+            >
+              اطلب موقعك
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main id="top">
+        <!-- Hero -->
+        <section class="hero">
+          <div class="container">
+            <div class="hero-brand-wrap">
+              <span class="hero-pablo" aria-hidden="true">PABLO</span>
+            </div>
+
+            <h1
+              class="hero-title"
+              id="heroTyping"
+              data-text="أعمل مواقع للمطاعم والمدرسين والمحلات"
+              aria-label="أعمل مواقع للمطاعم والمدرسين والمحلات"
+            >
+              <span id="typingOutput">أعمل مواقع للمطاعم والمدرسين والمحلات</span><span class="typing-cursor" aria-hidden="true"></span>
+            </h1>
+
+            <p class="hero-subtitle">موقع احترافي بيجيبلك عملاء، جاهز في يوم</p>
+
+            <div class="hero-actions">
+              <a
+                href="https://wa.me/201286894963?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%B4%D8%BA%D9%84%20PABLO%20%D9%88%D8%B9%D8%A7%D9%8A%D8%B2%20%D9%85%D9%88%D9%82%D8%B9"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-gold"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M20.5 11.7A8.5 8.5 0 0 1 7.9 19.1L3.5 20.5l1.4-4.2A8.5 8.5 0 1 1 20.5 11.7Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.4 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .4-.1.6l-.4.5c-.1.1-.2.3-.1.5.3.6.9 1.3 1.7 1.8.5.3 1 .5 1.4.6.2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.3.4.5 0 .6-.3 1.2-.8 1.5-.5.3-1.2.4-2 .2-1.2-.3-2.6-1.1-3.8-2.3-1.2-1.2-2-2.5-2.3-3.7-.2-.8 0-1.5.4-2Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span>كلمني على واتساب</span>
+              </a>
+              <a href="#works" class="btn-glass">شوف أعمالي</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Animated Stats Strip -->
+        <section class="stats-section" aria-label="إحصائيات سريعة">
+          <div class="container">
+            <div class="stats-grid reveal">
+              <div class="stat-card">
+                <span class="stat-value gold-text" data-counter="2" data-prefix="+" data-suffix="">+2</span>
+                <span class="stat-label">مشروع منشور</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value gold-text" data-counter="1" data-prefix="" data-suffix=" يوم">1 يوم</span>
+                <span class="stat-label">تسليم في يوم</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value gold-text" data-counter="100" data-prefix="" data-suffix="%">100%</span>
+                <span class="stat-label">شغال على الموبايل</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Works Section -->
+        <section id="works" class="section">
+          <div class="container">
+            <div class="section-header reveal">
+              <h2 class="section-title gold-text">أعمالي</h2>
+              <p class="section-desc">مواقع منشورة بالفعل وتقدر تجربها دلوقتي من موبايلك.</p>
+            </div>
+
+            <div class="works-grid">
+              <!-- Card 1: Restaurant -->
+              <article class="glass-card reveal">
+                <div class="phone-stage">
+                  <div class="mini-phone" aria-hidden="true">
+                    <div class="mini-phone-notch"></div>
+                    <div class="mini-phone-screen">
+                      <span class="mini-phone-tag">موقع مطعم</span>
+                      <span class="mini-phone-name">مطعم الحسنين</span>
+                      <div class="mini-phone-bars">
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="mini-phone-pill">اطلب دلوقتي</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="work-body">
+                  <span class="work-type">موقع مطعم</span>
+                  <h3 class="work-title">مطعم الحسنين</h3>
+                  <p class="work-desc">منيو منظم وأسعار واضحة مع طلب سريع ومباشر عبر واتساب.</p>
+                  <div class="work-action">
+                    <a
+                      href="https://marwanpabloo56-source.github.io/EL-HASSANIN/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-project"
+                    >
+                      <span>شوف الموقع</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M14 5H5v9M5 5l14 14"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Card 2: Teacher Platform -->
+              <article class="glass-card reveal">
+                <div class="phone-stage">
+                  <div class="mini-phone" aria-hidden="true">
+                    <div class="mini-phone-notch"></div>
+                    <div class="mini-phone-screen">
+                      <span class="mini-phone-tag">منصة تعليمية</span>
+                      <span class="mini-phone-name">منصة السفير</span>
+                      <div class="mini-phone-bars">
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="mini-phone-pill">احجز حصتك</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="work-body">
+                  <span class="work-type">منصة تعليمية لمدرس</span>
+                  <h3 class="work-title">منصة السفير</h3>
+                  <p class="work-desc">عرض المواعيد والدروس وحجز سهل للطلاب وأولياء الأمور.</p>
+                  <div class="work-action">
+                    <a
+                      href="https://marwanpabloo56-source.github.io/EL-SAFEEER/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-project"
+                    >
+                      <span>شوف الموقع</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M14 5H5v9M5 5l14 14"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+          <div class="container">
+            <div class="section-header reveal">
+              <h2 class="section-title gold-text">إيه اللي هتاخده</h2>
+              <p class="section-desc">كل المميزات الأساسية عشان موقعك يشتغل ويجيب عملاء من أول يوم.</p>
+            </div>
+
+            <div class="features-grid">
+              <div class="feature-card reveal">
+                <span class="feature-num">01</span>
+                <div>
+                  <h3 class="feature-title">تصميم يشتغل على الموبايل</h3>
+                  <p class="feature-sub">مقاسات مظبوطة وتصفح سريع ومريح من أي شاشة موبايل.</p>
+                </div>
+              </div>
+
+              <div class="feature-card reveal">
+                <span class="feature-num">02</span>
+                <div>
+                  <h3 class="feature-title">زرار واتساب للطلب أو الحجز</h3>
+                  <p class="feature-sub">تحويل العميل فورًا لمحادثة جاهزة على رقمك بلمسة واحدة.</p>
+                </div>
+              </div>
+
+              <div class="feature-card reveal">
+                <span class="feature-num">03</span>
+                <div>
+                  <h3 class="feature-title">دومين خاص بيك</h3>
+                  <p class="feature-sub">اسم رابط مخصص لشغلك يزود ثقة العميل في علامتك.</p>
+                </div>
+              </div>
+
+              <div class="feature-card reveal">
+                <span class="feature-num">04</span>
+                <div>
+                  <h3 class="feature-title">تعديلات بعد التسليم</h3>
+                  <p class="feature-sub">دعم وتحديثات سريعة بعد استلام الموقع لضمان رضاك.</p>
+                </div>
+              </div>
+
+              <div class="feature-card feature-card--wide reveal">
+                <span class="feature-num">05</span>
+                <div>
+                  <h3 class="feature-title">تسليم في يوم</h3>
+                  <p class="feature-sub">تنفيذ سريع واحترافي يخلي موقعك جاهز ومنشور خلال 24 ساعة.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">
+          <span>© PABLO - جميع الحقوق محفوظة</span>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Fixed WhatsApp Button -->
+    <a
+      class="floating-wa"
+      href="https://wa.me/201286894963?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%B4%D8%BA%D9%84%20PABLO%20%D9%88%D8%B9%D8%A7%D9%8A%D8%B2%20%D9%85%D9%88%D9%82%D8%B9"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="كلمني على واتساب"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M20.5 11.7A8.5 8.5 0 0 1 7.9 19.1L3.5 20.5l1.4-4.2A8.5 8.5 0 1 1 20.5 11.7Z"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M9.4 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .4-.1.6l-.4.5c-.1.1-.2.3-.1.5.3.6.9 1.3 1.7 1.8.5.3 1 .5 1.4.6.2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.3.4.5 0 .6-.3 1.2-.8 1.5-.5.3-1.2.4-2 .2-1.2-.3-2.6-1.1-3.8-2.3-1.2-1.2-2-2.5-2.3-3.7-.2-.8 0-1.5.4-2Z"
+          fill="currentColor"
+        />
+      </svg>
+      <span>كلمني على واتساب</span>
+    </a>
+
+    <script>
+      (function () {
+        var prefersReducedMotion =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // 1. Typing Effect for Main Headline
+        var titleEl = document.getElementById("heroTyping");
+        var outputEl = document.getElementById("typingOutput");
+        if (titleEl && outputEl && !prefersReducedMotion) {
+          var fullText = titleEl.getAttribute("data-text") || outputEl.textContent || "";
+          outputEl.textContent = "";
+          var idx = 0;
+          function typeNext() {
+            if (idx < fullText.length) {
+              idx += 1;
+              outputEl.textContent = fullText.slice(0, idx);
+              window.setTimeout(typeNext, 42);
+            }
+          }
+          window.setTimeout(typeNext, 180);
+        }
+
+        // 2. Lightweight Gold Particles Canvas
+        var canvas = document.getElementById("gold-particles");
+        if (canvas && canvas.getContext && !prefersReducedMotion) {
+          var ctx = canvas.getContext("2d");
+          var particles = [];
+          var width = 0;
+          var height = 0;
+          var rafId = null;
+
+          function initParticles() {
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = Math.floor(width * dpr);
+            canvas.height = Math.floor(height * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            var count = width < 640 ? 22 : 38;
+            particles = [];
+            for (var i = 0; i < count; i++) {
+              particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: 0.9 + Math.random() * 1.7,
+                vx: (Math.random() - 0.5) * 0.22,
+                vy: -0.12 - Math.random() * 0.22,
+                alpha: 0.22 + Math.random() * 0.5,
+              });
+            }
+          }
+
+          function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+            for (var i = 0; i < particles.length; i++) {
+              var p = particles[i];
+              p.x += p.vx;
+              p.y += p.vy;
+
+              if (p.y < -8) {
+                p.y = height + 8;
+                p.x = Math.random() * width;
+              }
+              if (p.x < -8) p.x = width + 8;
+              if (p.x > width + 8) p.x = -8;
+
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = "rgba(245, 215, 122, " + p.alpha + ")";
+              ctx.fill();
+            }
+            rafId = window.requestAnimationFrame(drawParticles);
+          }
+
+          initParticles();
+          drawParticles();
+
+          var resizeTimer;
+          window.addEventListener("resize", function () {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(initParticles, 150);
+          });
+
+          document.addEventListener("visibilitychange", function () {
+            if (document.hidden && rafId) {
+              window.cancelAnimationFrame(rafId);
+              rafId = null;
+            } else if (!document.hidden && !rafId) {
+              rafId = window.requestAnimationFrame(drawParticles);
+            }
+          });
+        }
+
+        // 3. Animated Counters
+        function animateCounter(el) {
+          if (el.getAttribute("data-counted") === "true") return;
+          el.setAttribute("data-counted", "true");
+
+          var target = parseInt(el.getAttribute("data-counter") || "0", 10);
+          var prefix = el.getAttribute("data-prefix") || "";
+          var suffix = el.getAttribute("data-suffix") || "";
+
+          if (prefersReducedMotion || target <= 0) {
+            el.textContent = prefix + target + suffix;
+            return;
+          }
+
+          var duration = target >= 50 ? 1100 : 650;
+          var start = null;
+
+          function step(timestamp) {
+            if (!start) start = timestamp;
+            var progress = Math.min((timestamp - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.round(eased * target);
+            el.textContent = prefix + current + suffix;
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              el.textContent = prefix + target + suffix;
+            }
+          }
+
+          el.textContent = prefix + "0" + suffix;
+          window.requestAnimationFrame(step);
+        }
+
+        // 4. Scroll Reveal + Trigger Counters
+        var revealEls = document.querySelectorAll(".reveal");
+        var counterEls = document.querySelectorAll("[data-counter]");
+
+        if ("IntersectionObserver" in window && !prefersReducedMotion) {
+          document.documentElement.classList.add("js-reveal");
+
+          var revealObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  var nestedCounters = entry.target.querySelectorAll("[data-counter]");
+                  nestedCounters.forEach(animateCounter);
+                  revealObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.1 }
+          );
+
+          revealEls.forEach(function (el) {
+            var rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.95) {
+              el.classList.add("is-visible");
+              el.querySelectorAll("[data-counter]").forEach(animateCounter);
+            } else {
+              revealObserver.observe(el);
+            }
+          });
+        } else {
+          counterEls.forEach(animateCounter);
+        }
+      })();
+    </script>
+  </body>
+</html>

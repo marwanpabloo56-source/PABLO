@@ -1,0 +1,6 @@
+{
+  "name": "بورتفوليو تصميم مواقع",
+  "description": "صفحة بورتفوليو عربية متجاوبة لتصميم مواقع المطاعم والمدرسين والمحلات.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
